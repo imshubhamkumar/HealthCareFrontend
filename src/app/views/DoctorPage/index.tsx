@@ -9,7 +9,6 @@ export const DoctorPage = () => {
         <>
             <div className="header-container flex justify-between">
                 <div className=""><CustomText text={"Welcome, Dr. Smith"} bold size={2} /></div>
-                <div className="">avatar</div>
             </div>
             <Spacer height={40} />
             <section className="main-container">
