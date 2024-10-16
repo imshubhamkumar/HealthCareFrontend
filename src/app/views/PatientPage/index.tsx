@@ -1,3 +1,4 @@
+import { Avatar } from "@/app/components/Avatar/index";
 import { ButtonComponent } from "@/app/components/Button";
 import { Cards } from "@/app/components/Grid";
 import { Spacer } from "@/app/components/Spacer";
@@ -8,7 +9,7 @@ export const PatientPage = () => {
         <>
             <div className="header-container flex justify-between">
                 <div className=""><CustomText text={"Welcome, John"} bold size={2} /></div>
-                <div className="">avatar</div>
+                <Avatar firstName="John" lastName="Deo"/>
             </div>
             <Spacer height={40} />
             <section className="main-container">
