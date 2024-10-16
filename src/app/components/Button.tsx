@@ -1,3 +1,4 @@
+
 interface Props{
     label: string
     onClick?: () => void
@@ -11,7 +12,7 @@ export const ButtonComponent = (props: Props) => {
         <button 
             onClick={onClick} 
             style={{color, background: bg, padding: '4px 18px', borderRadius: round ? '4px':0}}>
-            {label}
+           {label}
         </button>
     )
 }

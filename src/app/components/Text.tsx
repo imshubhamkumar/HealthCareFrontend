@@ -1,5 +1,7 @@
+import { ReactNode } from "react"
+
 interface Props {
-    text: string | null
+    text: string | null | ReactNode
     color?: string
     bold?: boolean
     size?: number
@@ -7,10 +9,10 @@ interface Props {
 export const CustomText = (props: Props) => {
     const {text, color="#333333", bold=false, size=1} = props
     return (
-        <p style={{
+        <div style={{
             fontSize: `${size}em`,
             fontWeight: bold ? 'bold': 'normal',
             color
-        }}>{text}</p>
+        }}>{text}</div>
     )
 }
