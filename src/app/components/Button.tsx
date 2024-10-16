@@ -1,6 +1,7 @@
+import { ReactNode } from "react"
 
 interface Props{
-    label: string
+    label: string | ReactNode
     onClick?: () => void
     bg?: string
     round?: boolean
