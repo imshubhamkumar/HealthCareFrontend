@@ -1,13 +1,17 @@
 interface Props{
     label: string
+    onClick?: () => void
     bg?: string
-    isRound?: boolean
-
+    round?: boolean
+    color?: string
 }
 export const ButtonComponent = (props: Props) => {
-    const {label, bg="#8bc63f"} = props
+    const {label,onClick, bg="#8bc63f", round = true, color="#ffffff"} = props
     return (
-        <button style={{background: bg, paddingLeft: 12, paddingRight: 12, paddingTop: 4, paddingBottom: 4}}>{label}</button>
+        <button 
+            onClick={onClick} 
+            style={{color, background: bg, padding: '4px 18px', borderRadius: round ? '4px':0}}>
+            {label}
+        </button>
     )
-
 }
