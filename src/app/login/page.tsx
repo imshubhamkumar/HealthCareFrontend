@@ -5,11 +5,11 @@ import Image from "next/image";
 import { CustomText } from "@/app/components/Text";
 import './style.css';
 import { ButtonComponent } from "@/app/components/Button";
+import { X } from "react-bootstrap-icons";
 
 const Login = () => {
   const [username, setUsername] = useState<string>();
   const [password, setPassword] = useState<string>();
-  const [isPassShow, setIsPassShow] = useState<boolean>(false);
   const [isError, setError] = useState<boolean>(false);
   const [errorMsg, setErrorMsg] = useState<string>("");
 
@@ -19,6 +19,7 @@ const Login = () => {
       setError(true);
       return;
     }
+    window.location = "/";
   };
 
   const closeError = () => {
@@ -35,10 +36,18 @@ const Login = () => {
           </div>
           <CustomText text="Login" color={'#0099d7'} bold={true} size={2} />
           <form className="flex flex-col gap-3 mt-4 w-full">
-            <input type="email" className="w-full p-1 border rounded" placeholder="Email" required={true} />
-            <input type="text" className="w-full p-1 border rounded" placeholder="password" required={true} />
-            <ButtonComponent label="Login" />
+            <input type="email" className="w-full p-1 border rounded" placeholder="Email" required={true} value={username}
+              onChange={(e) => setUsername(e.target.value)} />
+            <input type="text" className="w-full p-1 border rounded" placeholder="password" required={true} value={password}
+              onChange={(e) => setPassword(e.target.value)} />
+            <ButtonComponent label="Login" onClick={() => handleLogin()} />
           </form>
+          {isError && (
+            <span className="error-msg mt-4 flex gap-2">
+              {errorMsg}
+              <X className="fs-4 close-btn cursor-pointer" onClick={() => closeError()} />
+            </span>
+          )}
         </div>
       </div>
     </>
