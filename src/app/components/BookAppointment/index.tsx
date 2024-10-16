@@ -1,26 +1,27 @@
 "use client"
 
-import { useState } from 'react'
-import { CustomText } from "../Text";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './style.css';
 import { ButtonComponent } from '../Button';
-const BookAppointment = ({ children }) => {
-  const [selectedDate, setSelectedDate] = useState(null);
+import { CustomText } from "../Text";
+import { useState } from "react";
+interface Props {
+  onClose?: () => void
+  isVisible: boolean
+}
+const BookAppointment = (props: Props) => {
+  const { onClose, isVisible } = props
+  if (!isVisible) return null;
   return (
     <>
 
       <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
         <div className="bg-white p-8 rounded-lg shadow-lg max-w-2xl w-full">
-          <h2 className="text-3xl font-bold text-center mb-6 text-blue-600">
-            Book an Appointment
-          </h2>
-
+          <CustomText text={'Book an appointment'} color="#0099d7" bold={true} size={2} />
           {/* Form */}
           <form>
-            <div className="flex flex-row w-full">
-              <div className='flex flex-col'>
+            <div className="flex flex-row w-full gap-2">
+              <div className='flex flex-col w-1/2 gap-2'>
                 {/* Select Doctor */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -49,29 +50,29 @@ const BookAppointment = ({ children }) => {
                 </div>
               </div>
 
-              <div className="flex flex-col">
+              <div className="flex flex-col w-1/2">
                 {/* Available Time Slots */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Available Time Slots
                   </label>
                   <div className="grid grid-cols-3 gap-2">
-                    <button type="button" className="px-4 py-2 bg-gray-200 rounded-lg text-sm">
+                    <button type="button" className="px-4 py-1 bg-gray-200 rounded text-sm">
                       9:00 AM
                     </button>
-                    <button type="button" className="px-4 py-2 bg-gray-200 rounded-lg text-sm">
+                    <button type="button" className="px-4 py-2 bg-gray-200 rounded text-sm">
                       10:00 AM
                     </button>
-                    <button type="button" className="px-4 py-2 bg-gray-200 rounded-lg text-sm">
+                    <button type="button" className="px-4 py-2 bg-gray-200 rounded text-sm">
                       11:00 AM
                     </button>
-                    <button type="button" className="px-4 py-2 bg-gray-200 rounded-lg text-sm">
+                    <button type="button" className="px-4 py-2 bg-gray-200 rounded text-sm">
                       1:00 PM
                     </button>
-                    <button type="button" className="px-4 py-2 bg-gray-200 rounded-lg text-sm">
+                    <button type="button" className="px-4 py-2 bg-gray-200 rounded text-sm">
                       2:00 PM
                     </button>
-                    <button type="button" className="px-4 py-2 bg-gray-200 rounded-lg text-sm">
+                    <button type="button" className="px-4 py-2 bg-gray-200 rounded text-sm">
                       3:00 PM
                     </button>
                   </div>
@@ -102,8 +103,9 @@ const BookAppointment = ({ children }) => {
             </div>
 
             {/* Confirm Booking Button */}
-            <div className="mt-6 text-center">
+            <div className="mt-6 text-center flex justify-end gap-2">
               <ButtonComponent label='Confirm Booking' />
+              <ButtonComponent label="Cancel" bg="#a6a6a6" onClick={onClose} />
             </div>
           </form>
         </div>

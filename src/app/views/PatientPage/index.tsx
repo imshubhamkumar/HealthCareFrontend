@@ -4,12 +4,16 @@ import { Cards } from "@/app/components/Grid";
 import { Spacer } from "@/app/components/Spacer";
 import { CustomText } from "@/app/components/Text";
 
-export const PatientPage = () => {
+interface Props {
+    onClick?: () => void
+}
+
+export const PatientPage = (props: Props) => {
     return (
         <>
             <div className="header-container flex justify-between">
                 <div className=""><CustomText text={"Welcome, John"} bold size={2} /></div>
-                <Avatar firstName="John" lastName="Deo"/>
+                <Avatar firstName="John" lastName="Deo" />
             </div>
             <Spacer height={40} />
             <section className="main-container">
@@ -35,7 +39,7 @@ export const PatientPage = () => {
             </section>
             <Spacer height={26} />
             <div className="buttons-container flex justify-between">
-                <ButtonComponent label="Book Appointment" />
+                <ButtonComponent label="Book Appointment" onClick={props.onClick} />
                 <ButtonComponent label="View Health Records" />
                 <ButtonComponent label="Message Provider " />
             </div>
